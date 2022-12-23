@@ -21,6 +21,7 @@ Next to this, change the `claimVote` and `voteProducer` calls to your accounts.
 
 ```
 npm install
-node claim.js
+
 node voteproducer.js
+node claim.js
 ```
