@@ -16,23 +16,23 @@ const signatureProvider = new JsSignatureProvider([defaultPrivateKey]);
 const rpc = new JsonRpc('https://wax.cryptolions.io', { fetch });
 const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
 
-const CLAIM_VOTE_CONTRACT = 'eosio';
-const CLAIM_VOTE_ACTION = 'voteproducer';
+const SET_VOTE_PRODUCER_CONTRACT = 'eosio';
+const SET_VOTE_PRODUCER_ACTION = 'voteproducer';
 
-const claimVote = async (actor, permission) => {
+const setVoteProducer = async (actor, permission, proxy) => {
   try
   {
     const result = await api.transact({
       actions: [{
-        account: CLAIM_VOTE_CONTRACT,
-        name: CLAIM_VOTE_ACTION,
+        account: SET_VOTE_PRODUCER_CONTRACT,
+        name: SET_VOTE_PRODUCER_ACTION,
         authorization: [{
           actor: actor,
           permission: permission,
         }],
         data: {
           voter: actor,
-          proxy: 'waxcommunity',
+          proxy: proxy,
           producers: [],
         },
       }]
@@ -56,9 +56,9 @@ const claimVote = async (actor, permission) => {
 }
 
 const main = async() => {
-  claimVote('saschaahcsas', 'voteproducer');
-  claimVote('fx', 'voteproducer');
-  claimVote('fabriceisone', 'voteproducer');
+  setVoteProducer('saschaahcsas', 'voteproducer', 'waxcommunity');
+  setVoteProducer('fx', 'voteproducer', 'waxcommunity');
+  setVoteProducer('fabriceisone', 'voteproducer', 'waxcommunity');
 }
 
 main();
