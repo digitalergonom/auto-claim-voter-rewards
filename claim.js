@@ -1,5 +1,7 @@
 const { Api, JsonRpc, RpcError } = require('eosjs');
 const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig'); // development only
+const {defaultPrivateKey} = require(`./keys.json`);
+
 global.nativeFetch = require('node-fetch')
 global.fetch = (url, args = {}) => {
   args.headers = args.headers || {}
@@ -10,7 +12,6 @@ global.fetch = (url, args = {}) => {
 global.WebSocket = require('ws')
 const { TextEncoder, TextDecoder } = require('util');
 
-const defaultPrivateKey = '5JJHCc46kAMwNAEp3vU11rkBiHUAFzRgkbNBqfWajqkg1g5QL2F';
 const signatureProvider = new JsSignatureProvider([defaultPrivateKey]);
 
 const rpc = new JsonRpc('https://wax.cryptolions.io', { fetch });

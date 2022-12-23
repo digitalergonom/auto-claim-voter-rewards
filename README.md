@@ -15,7 +15,7 @@ Create a private key that can only do the `eosio::claimgbmvote` and `eosio::vote
 
 You can delegate claimgbmvote and voteproducer permissions from different accounts to your main account.
 
-If you are ready with your limited private key, put it as `defaultPrivateKey` in claim.js and voteproducer.js
+If you are ready with your limited private key, put it as `defaultPrivateKey` in `sample.keys.json` and rename it to `keys.json`
 
 Next to this, change the `claimVote` and `voteProducer` calls to your accounts.
 
