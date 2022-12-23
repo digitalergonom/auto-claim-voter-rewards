@@ -41,7 +41,6 @@ const setVoteProducer = async (actor, permission, proxy) => {
       blocksBehind: 3,
       expireSeconds: 30,
     });
-    // console.dir(result);
   }
   catch (e)
   {

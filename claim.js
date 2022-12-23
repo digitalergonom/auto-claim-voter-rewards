@@ -39,7 +39,6 @@ const claimVote = async (actor, permission) => {
       blocksBehind: 3,
       expireSeconds: 30,
     });
-    // console.dir(result);
   }
   catch (e)
   {
