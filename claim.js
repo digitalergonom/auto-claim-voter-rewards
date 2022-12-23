@@ -1,6 +1,6 @@
 const { Api, JsonRpc, RpcError } = require('eosjs');
 const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig'); // development only
-const {defaultPrivateKey} = require(`./keys.json`);
+const {defaultPrivateKey, node} = require(`./config.json`);
 
 global.nativeFetch = require('node-fetch')
 global.fetch = (url, args = {}) => {
@@ -14,7 +14,7 @@ const { TextEncoder, TextDecoder } = require('util');
 
 const signatureProvider = new JsSignatureProvider([defaultPrivateKey]);
 
-const rpc = new JsonRpc('https://wax.cryptolions.io', { fetch });
+const rpc = new JsonRpc(node, { fetch });
 const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
 
 const CLAIM_VOTE_CONTRACT = 'eosio';
